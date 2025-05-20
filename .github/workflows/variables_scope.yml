@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Step that overrides job variable
+name: Compare GitHub env and shell export
 
 # Controls when the workflow will run
 on:
@@ -9,8 +9,9 @@ on:
 env:
   MY_JOB_VARIABLE: "Overridden at step level"
   run: |
-  echo "MY_JOB_VARIABLE (Overridden): $MY_JOB_VARIABLE"  
-
+    export SHELL_VAR="Shell-defined"
+    echo "GitHub env: $MY_WORKFLOW_VARIABLE"
+    echo "Shell var (local): $SHELL_VAR"
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
